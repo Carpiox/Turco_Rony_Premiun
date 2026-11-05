@@ -24,3 +24,6 @@ export const StarIcon = (p: SVGProps<SVGSVGElement>) => (
 export const PlayIcon = (p: SVGProps<SVGSVGElement>) => (
   <svg {...base(p)}><path d="M8 5v14l11-7z" /></svg>
 )
+export const ScooterIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}><path d="M19 7h-3V5h3a1 1 0 0 1 1 1v1ZM5 17a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 4.2a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4ZM19 17a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 4.2a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4ZM15.5 8l1.3 6.2.7 2.8h-1.9l-.6-2.2H9l-.4 1.2H6.8l1.1-3.2A3.3 3.3 0 0 1 11 10h3l-.3-2H11V6h2.7a1.8 1.8 0 0 1 1.8 1.5L15.5 8Z" transform="translate(0 -3)" /></svg>
+)

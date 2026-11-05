@@ -5,12 +5,7 @@ export const PENDING = {
   titular: '[NOMBRE O RAZÓN SOCIAL]',
   nif: '[NIF/CIF]',
   email: '[EMAIL DE CONTACTO]',
-  resenas: '[RESEÑAS REALES]',
-  puntuacion: '[X,X]',
-  numResenas: '[N]',
-  enlaceResenas: '#',
   alergenos: '[LISTA DE ALÉRGENOS POR PLATO]',
-  precioBebida: '[PRECIO BEBIDAS]',
 }
 
 export const site = {
@@ -22,12 +17,23 @@ export const site = {
   instagram: 'https://www.instagram.com/kebab_cieza/',
   tiktok: 'https://www.tiktok.com/@kebap_cieza',
   hoursText: ['12:30 – 16:00', '19:00 – 00:45'],
-  // Plataformas de reparto: rellenar la url cuando se sepa
-  delivery: [
+  // Plataformas de reparto: rellenar la url cuando se sepa (si es null, no se muestra)
+  platforms: [
     { name: 'Glovo', url: null as string | null },
     { name: 'Just Eat', url: null as string | null },
   ],
+  delivery: {
+    price: '1 €',
+    area: 'Cieza',
+    // [CONFIRMAR] pedido mínimo y horario de reparto: rellenar y se mostrarán solos
+    minOrder: null as string | null, // p. ej. '10 €'
+    hours: null as string | null, // p. ej. '12:30–16:00 y 19:00–00:30'
+  },
 }
+
+/** Reseñas reales de Google. Vacío = la sección se oculta. */
+export interface Review { text: string; author: string; date: string; stars: number }
+export const REVIEWS: Review[] = []
 
 export const waLink = (text: string) =>
   `https://wa.me/${site.phone.replace('+', '')}?text=${encodeURIComponent(text)}`

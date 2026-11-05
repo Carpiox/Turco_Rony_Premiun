@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { mapsEmbed, mapsLink, site, WA_ORDER } from '../data/site'
 import { Reveal } from './Reveal'
+import { DeliveryChip } from './DeliveryBar'
 import { ClockIcon, PhoneIcon, PinIcon, WhatsAppIcon } from './Icons'
 
 export function Location() {
@@ -22,11 +23,11 @@ export function Location() {
             <a href={WA_ORDER} target="_blank" rel="noopener noreferrer" className="btn btn-wa"><WhatsAppIcon />Pedir por WhatsApp</a>
           </div>
           <div className="mt-8 rounded-2xl border border-dashed border-ocre/40 p-4 text-sm text-crema/80">
-            <strong className="text-ocre-soft">¿Prefieres que te lo llevemos?</strong>
-            <ul className="mt-2 flex flex-wrap gap-2">
-              {site.delivery.map((d) => d.url
-                ? <li key={d.name}><a className="rounded-full border border-ocre/50 px-3 py-1.5 hover:bg-ocre hover:text-ink" href={d.url} target="_blank" rel="noopener noreferrer">{d.name}</a></li>
-                : <li key={d.name} className="rounded-full border border-crema/20 px-3 py-1.5 text-sand">{d.name}: [ENLACE PENDIENTE]</li>)}
+            <DeliveryChip />
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {site.platforms.filter((d) => d.url).map((d) => (
+                <li key={d.name}><a className="rounded-full border border-ocre/50 px-3 py-1.5 hover:bg-ocre hover:text-ink" href={d.url!} target="_blank" rel="noopener noreferrer">{d.name}</a></li>
+              ))}
               <li><a className="rounded-full border border-ocre/50 px-3 py-1.5 hover:bg-ocre hover:text-ink" href={`tel:${site.phone}`}>Llamar</a></li>
             </ul>
           </div>

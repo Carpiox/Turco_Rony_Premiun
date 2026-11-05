@@ -7,7 +7,7 @@ import { Reveal } from './Reveal'
 
 function Card({ item, i }: { item: Item; i: number }) {
   const photo = item.img ? imgSrc(item.img) : item.poster ? { src: media(`video/${item.poster}`), srcSet: undefined } : null
-  const [main, ...rest] = item.prices
+  const [main, ...rest] = item.prices as (Item['prices'][number] | undefined)[]
   return (
     <m.article
       initial={{ opacity: 0, y: 18 }}
@@ -31,14 +31,14 @@ function Card({ item, i }: { item: Item; i: number }) {
             <h3 className="text-[1.35rem] leading-tight">{item.name}</h3>
           </div>
           <div className="shrink-0 text-right">
-            {main.label && <div className="text-[11px] uppercase tracking-wider text-sand">{main.label}</div>}
-            <div className="font-display text-2xl text-ocre-soft" style={{ fontVariationSettings: "'wght' 800" }}>{main.value}</div>
+            {main?.label && <div className="text-[11px] uppercase tracking-wider text-sand">{main.label}</div>}
+            {main && <div className="font-display text-2xl text-ocre-soft" style={{ fontVariationSettings: "'wght' 800" }}>{main.value}</div>}
           </div>
         </div>
         {item.desc && <p className="mt-2 text-sm leading-relaxed text-crema/70">{item.desc}</p>}
         {rest.length > 0 && (
           <ul className="mt-4 space-y-1.5 border-t border-dashed border-crema/15 pt-3 text-sm">
-            {rest.map((p) => (
+            {rest.map((p) => p && (
               <li key={p.label} className={`flex items-baseline gap-2 ${p.menu ? 'text-ocre-soft' : 'text-crema/85'}`}>
                 <span className="font-semibold">{p.label}</span>
                 {p.note && <span className="text-xs text-sand">({p.note})</span>}
@@ -67,7 +67,7 @@ export function Menu() {
           <p className="mt-4 max-w-lg text-crema/75">Todos los menús llevan patatas y bebida. Los dürum, kebab y tacos puedes pedirlos en grande o XXXL.</p>
         </Reveal>
 
-        <div className="sticky top-16 z-20 -mx-4 mt-8 bg-ink/90 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6" role="group" aria-label="Filtrar la carta">
+        <div className="sticky top-[6.25rem] z-20 -mx-4 mt-8 bg-ink/90 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6" role="group" aria-label="Filtrar la carta">
           <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
             {FILTERS.map((x) => (
               <button key={x.id} onClick={() => setF(x.id)} aria-pressed={f === x.id}

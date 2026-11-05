@@ -1,5 +1,4 @@
 import { media } from './site'
-import { PENDING } from './site'
 
 export type Tag = 'pollo' | 'ternera' | 'vegetariano' | 'tacos' | 'bebidas'
 export const FILTERS: { id: Tag | 'todo'; label: string }[] = [
@@ -89,8 +88,8 @@ export const MENU: Item[] = [
   { id: 'arroz', num: 13, name: 'Arroz basmati', tags: ['vegetariano'],
     prices: [{ label: 'Pequeña', value: e('2,00') }, { label: 'Mediana', value: e('3,50') }, { label: 'Grande', value: e('5,00') }] },
 
-  { id: 'bebidas', name: 'Bebidas', desc: 'Todos los menús incluyen bebida.', tags: ['bebidas'],
-    prices: [{ label: 'Refrescos', value: PENDING.precioBebida }] },
+  { id: 'bebidas', name: 'Bebidas', desc: 'Todos los menús incluyen bebida. Pregunta por la selección de refrescos.', tags: ['bebidas'],
+    prices: [] },
 ]
 
 export const imgSrc = (n: string) => ({

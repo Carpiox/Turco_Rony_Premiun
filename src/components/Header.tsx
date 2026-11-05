@@ -26,7 +26,7 @@ export function Header() {
   }, [open])
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${solid || open ? 'bg-ink/92 backdrop-blur-md shadow-[0_1px_0_rgba(217,160,58,.18)]' : 'bg-transparent'}`}>
+    <header className={`fixed inset-x-0 top-9 z-40 transition-colors duration-300 ${solid || open ? 'bg-ink/92 backdrop-blur-md shadow-[0_1px_0_rgba(217,160,58,.18)]' : 'bg-transparent'}`}>
       <div className="container-x flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5" aria-label="Döner Kebab Cieza, inicio">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-ember text-ocre-soft" aria-hidden="true">
@@ -54,7 +54,7 @@ export function Header() {
       </div>
 
       {open && (
-        <nav id="menu-movil" aria-label="Principal móvil" className="tile-bg container-x flex h-[calc(100svh-4rem)] flex-col gap-1 pt-6 md:hidden">
+        <nav id="menu-movil" aria-label="Principal móvil" className="tile-bg container-x flex h-[calc(100svh-6.25rem)] flex-col gap-1 pt-6 md:hidden">
           {LINKS.map(([h, l]) => (
             <a key={h} href={h} onClick={() => setOpen(false)} className="border-b border-crema/10 py-4 font-display text-3xl" style={{ fontVariationSettings: "'wght' 800" }}>{l}</a>
           ))}

@@ -3,9 +3,10 @@ import { WA_ORDER } from '../data/site'
 import { WhatsAppIcon } from './Icons'
 
 const LINKS = [
-  ['#carta', 'Carta'],
+  ['#tacos', 'Tacos'],
+  ['#monta', 'Monta el tuyo'],
   ['#galeria', 'Galería'],
-  ['#resenas', 'Reseñas'],
+  ['#carta', 'Carta'],
   ['#donde', 'Cómo llegar'],
 ]
 

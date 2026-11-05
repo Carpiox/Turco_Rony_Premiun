@@ -1,0 +1,53 @@
+@import '@fontsource-variable/fraunces/wght.css';
+@import '@fontsource-variable/dm-sans/wght.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-ink text-crema font-sans antialiased; overflow-x: hidden; }
+  h1, h2, h3 { @apply font-display; font-variation-settings: 'wght' 800; letter-spacing: -0.01em; }
+  :focus-visible { outline: 3px solid theme('colors.ocre.soft'); outline-offset: 3px; border-radius: 6px; }
+  ::selection { background: theme('colors.ember.DEFAULT'); color: #fff; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+  .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-bold transition duration-200 active:scale-[.97]; }
+  .btn-wa { @apply bg-[#25d366] text-[#07210f] shadow-[0_8px_28px_-8px_rgba(37,211,102,.7)] hover:bg-[#3be37c]; }
+  .btn-ghost { @apply border border-crema/40 text-crema hover:border-ocre hover:text-ocre-soft backdrop-blur-sm bg-ink/30; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[.22em] text-ocre; }
+  .section-title { @apply text-[2rem] leading-[1.05] sm:text-5xl; }
+}
+
+/* Motivo geométrico turco (kilim) como separador y textura */
+.kilim {
+  height: 18px;
+  background-color: theme('colors.ember.deep');
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18' viewBox='0 0 36 18'%3E%3Cpath d='M0 9 9 0l9 9-9 9zM18 9l9-9 9 9-9 9z' fill='%23d9a03a'/%3E%3Cpath d='M9 5l4 4-4 4-4-4zM27 5l4 4-4 4-4-4z' fill='%230e0907'/%3E%3C/svg%3E");
+  background-size: 36px 18px;
+}
+.tile-bg {
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(194,48,31,.22), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 4l24 24-24 24L4 28z' fill='none' stroke='%23d9a03a' stroke-opacity='.09' stroke-width='1.5'/%3E%3Cpath d='M28 16l12 12-12 12-12-12z' fill='none' stroke='%23d9a03a' stroke-opacity='.07' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+/* Hero: entrada con CSS puro para no retrasar el LCP */
+.hero-in { animation: fade-up .9s cubic-bezier(.2,.7,.2,1) both; }
+.hero-in.d1 { animation-delay: .12s } .hero-in.d2 { animation-delay: .24s } .hero-in.d3 { animation-delay: .36s }
+
+/* Döner SVG de reserva */
+@keyframes spin-strip { to { transform: translateX(-120px); } }
+.doner-strip { animation: spin-strip 3.2s linear infinite; }
+@keyframes flame { 0%,100% { opacity: .75; transform: scaleY(1) } 50% { opacity: 1; transform: scaleY(1.08) } }
+.flame { animation: flame 1.6s ease-in-out infinite; transform-origin: bottom; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-in { animation: none; }
+  .doner-strip, .flame { animation: none; }
+}
+.no-scrollbar { scrollbar-width: none; } .no-scrollbar::-webkit-scrollbar { display: none; }

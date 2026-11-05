@@ -15,14 +15,13 @@ function Doc({ id, title, children }: { id: string; title: string; children: Rea
 
 export function Footer() {
   return (
-    <footer className="relative bg-coal pb-24 pt-14">
-      <div className="kilim absolute inset-x-0 top-0" aria-hidden="true" />
-      <div className="container-x grid gap-10 md:grid-cols-[1fr_1.4fr]">
+    <footer className="bg-ink pb-28 sm:pb-16">
+      <div className="kilim" aria-hidden="true" />
+      <p className="container-x pt-10 font-display text-[clamp(2.4rem,11.5vw,6.5rem)] font-black uppercase leading-[.9] tracking-tight text-ocre" style={{ fontVariationSettings: "'wght' 900" }} aria-hidden="true">Döner Kebab<br />Cieza</p>
+      <div className="container-x mt-8 grid gap-10 md:grid-cols-[1fr_1.4fr]">
         <div>
-          <p className="font-display text-3xl" style={{ fontVariationSettings: "'wght' 800" }}>Döner Kebab <span className="text-ocre-soft italic">Cieza</span></p>
-          <address className="mt-3 not-italic text-crema/75">{site.street}<br />{site.city}<br />
+          <address className="not-italic text-crema/75">{site.street}<br />{site.city}<br />
             <a href={`tel:${site.phone}`} className="underline decoration-ocre underline-offset-4">{site.phoneDisplay}</a></address>
-          <p className="mt-3 text-sm text-crema/75">Todos los días · {site.hoursText.join(' y ')}</p>
           <div className="mt-5 flex gap-3">
             <a href={site.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram de Döner Kebab Cieza" className="grid h-11 w-11 place-items-center rounded-full border border-crema/25 hover:border-ocre hover:text-ocre-soft"><InstagramIcon /></a>
             <a href={site.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok de Döner Kebab Cieza" className="grid h-11 w-11 place-items-center rounded-full border border-crema/25 hover:border-ocre hover:text-ocre-soft"><TikTokIcon /></a>
@@ -47,7 +46,7 @@ export function Footer() {
           </Doc>
         </div>
       </div>
-      <p className="container-x mt-10 text-xs text-sand">© {new Date().getFullYear()} {site.name}. Textos legales orientativos: [REVISAR CON ASESOR].</p>
+      <p className="container-x mt-10 text-xs text-sand">© {new Date().getFullYear()} {site.name}.</p>
     </footer>
   )
 }

@@ -1,40 +1,45 @@
-import { WA_ORDER, site } from '../data/site'
-import { useOpenNow } from '../lib/open'
+import { WA_ORDER, media } from '../data/site'
 import { LoopVideo } from './LoopVideo'
-import { AfterHoursNote, DeliveryChip, DeliveryHours } from './DeliveryBar'
+import { AfterHoursNote, DeliveryChip } from './DeliveryBar'
 import { WhatsAppIcon } from './Icons'
 
+/** Hero: la foto real más nítida (1600 px) arriba en móvil y a la derecha en escritorio; titular sobre rojo sólido. */
 export function Hero() {
-  const open = useOpenNow()
   return (
-    <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden text-center">
-      <LoopVideo name="hero-gratinado" mode="idle" eager className="absolute inset-0" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,9,7,.8)_0%,rgba(14,9,7,.45)_32%,rgba(14,9,7,.6)_60%,#0e0907_100%)]" aria-hidden="true" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_105%,rgba(194,48,31,.5),transparent_62%)]" aria-hidden="true" />
-
-      <div className="container-x relative flex flex-col items-center pb-20 pt-32">
-        <h1 className="flex flex-col items-center">
-          <span className="eyebrow">Döner Kebab Cieza · el taco de la Gran Vía</span>
-          <span className="mt-4 block text-[clamp(3.4rem,17vw,9.5rem)] leading-[.88] tracking-tight">
-            Tacos<br /><span className="italic text-ocre-soft" style={{ fontVariationSettings: "'wght' 700" }}>gratinados</span>
-          </span>
-        </h1>
-        <p className="mt-5 max-w-md text-lg leading-snug text-crema/95 sm:text-xl">
-          Queso fundido, carne jugosa y salsa Tacos Argelina. A tu mesa o a tu puerta.
-        </p>
-        <div className="mt-7 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
-          <a href={WA_ORDER} target="_blank" rel="noopener noreferrer" className="btn btn-wa"><WhatsAppIcon />Pedir por WhatsApp</a>
-          <a href="#tacos" className="btn btn-ghost">Ver tacos</a>
+    <section id="top" className="relative overflow-hidden bg-ember pt-[6.25rem] text-crema lg:pt-0">
+      <div className="mx-auto grid max-w-[90rem] lg:min-h-[100svh] lg:grid-cols-[1fr_1.05fr] lg:items-center">
+        <div className="relative lg:order-2 lg:h-full lg:py-24 lg:pr-8">
+          <div className="relative aspect-[5/4] w-full overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[480px] lg:rounded-l-none lg:rounded-r-[2rem]">
+            <img
+              src={media('img/hero-taco-800.webp')}
+              srcSet={`${media('img/hero-taco-800.webp')} 800w, ${media('img/hero-taco-1600.webp')} 1600w`}
+              sizes="(min-width:1024px) 52vw, 100vw"
+              alt="Taco gratinado cortado por la mitad: queso fundido, tiras de pollo crujientes, pimientos y el relleno a la vista"
+              width={1600} height={1200} fetchPriority="high" decoding="async"
+              className="foto absolute inset-0 h-full w-full object-cover" />
+          </div>
+          <div className="absolute bottom-0 left-4 translate-y-1/2 sm:left-6 lg:bottom-32 lg:left-0 lg:translate-x-[-45%] lg:translate-y-0">
+            <LoopVideo name="tacos-plancha" mode="idle" ratio="1/1" className="h-24 w-24 rounded-full border-[5px] border-ocre shadow-xl sm:h-28 sm:w-28" />
+          </div>
         </div>
-        <AfterHoursNote reserve className="mt-3 text-center" />
-        <DeliveryChip className="mt-2" />
-        <DeliveryHours className="mt-2" />
-        <p className="mt-4 flex items-center gap-2 text-sm text-crema/85" aria-live="polite">
-          <span className={`h-2.5 w-2.5 rounded-full ${open === null ? 'bg-sand/50' : open ? 'bg-[#34d27b] shadow-[0_0_10px_#34d27b]' : 'bg-ember-glow'}`} aria-hidden="true" />
-          {open === null ? '' : open ? 'Abierto ahora · ' : 'Cerrado ahora · '}{site.hoursText.join(' y ')}
-        </p>
+
+        <div className="container-x relative pb-14 pt-16 lg:order-1 lg:max-w-none lg:py-24 lg:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-12">
+          <p className="text-sm font-bold uppercase tracking-wide text-crema">Döner Kebab Cieza</p>
+          <h1 className="mt-2 text-[clamp(3.2rem,15.5vw,7.4rem)] leading-[.88] tracking-tight">
+            Tacos<br /><span className="text-ocre">gratinados</span>
+          </h1>
+          <p className="mt-5 max-w-md text-lg leading-snug sm:text-xl">
+            De pollo o mixto, con queso por encima. Pídelos por WhatsApp y te los llevamos a casa.
+          </p>
+          <div className="mt-7 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row">
+            <a href={WA_ORDER} data-hide-fab target="_blank" rel="noopener noreferrer" className="btn btn-wa"><WhatsAppIcon />Pedir por WhatsApp</a>
+            <a href="#tacos" className="btn btn-ghost">Ver tacos</a>
+          </div>
+          <DeliveryChip className="mt-5 text-crema" />
+          <AfterHoursNote className="mt-3" />
+        </div>
       </div>
-      <div className="kilim absolute inset-x-0 bottom-0" aria-hidden="true" />
+      <div className="kilim" aria-hidden="true" />
     </section>
   )
 }

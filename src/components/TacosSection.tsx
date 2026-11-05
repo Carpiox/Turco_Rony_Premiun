@@ -1,88 +1,51 @@
 import { MAIN_TACOS, MORE_TACOS, orderTaco } from '../data/tacos'
 import type { Taco } from '../data/tacos'
 import { imgSrc } from '../data/menu'
-import { media } from '../data/site'
 import { Reveal } from './Reveal'
 import { Steam } from './Steam'
-import { DeliveryChip } from './DeliveryBar'
 import { WhatsAppIcon } from './Icons'
 
-const photoOf = (t: Taco) => (t.img ? imgSrc(t.img) : t.poster ? { src: media(`video/${t.poster}`), srcSet: undefined } : null)
-
-function Big({ t, i }: { t: Taco; i: number }) {
-  const ph = photoOf(t)
+function Card({ t, className = '' }: { t: Taco; className?: string }) {
+  const ph = imgSrc(t.img)
   return (
-    <Reveal delay={i * 0.12}>
-      <article className="group relative isolate flex min-h-[78svh] flex-col justify-end overflow-hidden rounded-3xl border border-ocre/25 bg-coal shadow-[0_30px_60px_-30px_rgba(0,0,0,.95)] md:min-h-[640px]">
-        {ph && <img src={ph.src} srcSet={ph.srcSet} sizes="(min-width:768px) 560px, 94vw" alt={`Foto real de ${t.name}`} width={800} height={1000} loading="lazy" decoding="async"
-          className="absolute inset-0 -z-10 h-full w-full object-cover transition duration-[1400ms] group-hover:scale-105" />}
+    <article className={`flex flex-col overflow-hidden rounded-2xl bg-paper ring-1 ring-ink/10 shadow-[0_16px_30px_-20px_rgba(20,16,14,.55)] ${className}`}>
+      <div className="relative aspect-square overflow-hidden bg-ash">
+        <img src={ph.src} srcSet={ph.srcSet} sizes="(min-width:768px) 480px, 92vw" alt={`Foto del taco: ${t.name}`} width={640} height={640} loading="lazy" decoding="async" className="foto h-full w-full object-cover" />
         <Steam />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(14,9,7,.1)_0%,rgba(14,9,7,.3)_26%,rgba(14,9,7,.92)_52%,#0e0907_100%)]" aria-hidden="true" />
-        <div className="p-6 pt-48 sm:p-8">
-          <p className="eyebrow">{t.kicker}</p>
-          <h3 className="mt-1 text-[2.1rem] leading-[1.02] drop-shadow-[0_2px_10px_rgba(0,0,0,.8)] sm:text-4xl">{t.name}</h3>
-          <ul className="mt-4 flex flex-wrap gap-2" aria-label="Ingredientes">
-            {t.ingredients.map((x) => <li key={x} className="rounded-full border border-crema/25 bg-ink/50 px-3 py-1 text-[13px] text-crema/90 backdrop-blur-sm">{x}</li>)}
-          </ul>
-          <dl className="mt-5 grid grid-cols-3 gap-2 border-t border-dashed border-crema/20 pt-4">
-            {t.prices.map((p) => (
-              <div key={p.label}>
-                <dt className="text-[11px] uppercase tracking-wider text-sand">{p.label}</dt>
-                <dd className="font-display text-[1.7rem] leading-none text-ocre-soft" style={{ fontVariationSettings: "'wght' 800" }}>{p.value}</dd>
-                {p.note && <dd className="mt-1 text-[11px] text-sand">{p.note}</dd>}
-              </div>
-            ))}
-          </dl>
-          <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-            <a href={orderTaco(t)} target="_blank" rel="noopener noreferrer" className="btn btn-wa w-full sm:w-auto"><WhatsAppIcon />Pedir este taco</a>
-            <DeliveryChip />
-          </div>
-        </div>
-      </article>
-    </Reveal>
-  )
-}
-
-function Small({ t, i }: { t: Taco; i: number }) {
-  const ph = photoOf(t)
-  return (
-    <Reveal delay={i * 0.08}>
-      <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-ocre/15 bg-coal">
-        <div className="relative aspect-[4/3] overflow-hidden bg-ash">
-          {ph && <img src={ph.src} srcSet={ph.srcSet} sizes="(min-width:768px) 360px, 92vw" alt={`Foto real de ${t.name}`} width={640} height={480} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />}
-          <Steam />
-        </div>
-        <div className="flex flex-1 flex-col p-5">
-          <p className="eyebrow !text-[10px]">{t.kicker}</p>
-          <h3 className="mt-1 text-2xl leading-tight">{t.name}</h3>
-          <p className="mt-2 flex-1 text-sm leading-relaxed text-crema/70">{t.ingredients.join(' · ')}</p>
-          <div className="mt-4 flex items-end justify-between gap-3 border-t border-dashed border-crema/15 pt-3">
-            <div className="text-sm">{t.prices.map((p) => <div key={p.label} className="text-crema/80">{p.label} <strong className="text-ocre-soft">{p.value}</strong></div>)}</div>
-            <a href={orderTaco(t)} target="_blank" rel="noopener noreferrer" className="btn btn-wa !min-h-[44px] !px-4 !py-2 !text-sm"><WhatsAppIcon width={18} height={18} />Pedir</a>
-          </div>
-        </div>
-      </article>
-    </Reveal>
+        <span className="num absolute left-0 top-3 rounded-r">Nº {t.num}</span>
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="text-[1.65rem] leading-tight text-ember">{t.name}</h3>
+        <p className="mt-1.5 flex-1 text-[15px] leading-snug text-ink/75">{t.ingredients.join(', ')}.</p>
+        <dl className="mt-4 flex gap-4 border-t border-dashed border-ink/20 pt-3">
+          {t.prices.map((p) => (
+            <div key={p.label}>
+              <dt className="text-[11px] font-semibold uppercase tracking-wide text-smoke">{p.label}</dt>
+              <dd className="whitespace-nowrap font-display text-[1.35rem] leading-none text-ink" style={{ fontVariationSettings: "'wght' 800" }}>{p.value}</dd>
+              {p.note && <dd className="mt-0.5 text-[11px] text-smoke">{p.note}</dd>}
+            </div>
+          ))}
+        </dl>
+        <a href={orderTaco(t)} data-hide-fab target="_blank" rel="noopener noreferrer" className="btn btn-wa mt-5 w-full"><WhatsAppIcon />Pedir este taco</a>
+      </div>
+    </article>
   )
 }
 
 export function TacosSection() {
   return (
-    <section id="tacos" className="tile-bg py-20 sm:py-28" aria-labelledby="tacos-t">
+    <section id="tacos" className="bg-crema py-14 text-ink sm:py-20">
       <div className="container-x">
         <Reveal>
-          <p className="eyebrow">El producto estrella</p>
-          <h2 id="tacos-t" className="section-title mt-3 max-w-2xl">Nuestros <span className="italic text-ocre-soft">tacos</span></h2>
-          <p className="mt-4 max-w-lg text-lg text-crema/80">Elige entre pechuga de pollo o mixto de ternera y pollo. Los dos con queso mozzarella, salsa Tacos Argelina y salsa blanca.</p>
+          <h2 className="section-title">Los tacos</h2>
+          <p className="mt-3 max-w-md text-lg text-ink/80">Pollo o mixto. Los dos llevan mozzarella, salsa Tacos Argelina, salsa blanca y las verduras que quieras.</p>
         </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {MAIN_TACOS.map((t, i) => <Big key={t.id} t={t} i={i} />)}
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          {MAIN_TACOS.map((t, i) => <Reveal key={t.id} delay={i * 0.1}><Card t={t} className="h-full" /></Reveal>)}
         </div>
-        <Reveal className="mt-14">
-          <h3 className="text-2xl sm:text-3xl">Más tacos <span className="italic text-ocre-soft">para los que quieren más</span></h3>
-        </Reveal>
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {MORE_TACOS.map((t, i) => <Small key={t.id} t={t} i={i} />)}
+        <Reveal className="mt-12"><h3 className="text-2xl sm:text-3xl">Si tienes más hambre</h3></Reveal>
+        <div className="no-scrollbar -mx-4 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 sm:-mx-6 sm:px-6 lg:mx-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0" tabIndex={0} aria-label="Más tacos, desliza para verlos">
+          {MORE_TACOS.map((t) => <Card key={t.id} t={t} className="w-[80%] shrink-0 snap-start sm:w-[22rem] lg:w-auto" />)}
         </div>
       </div>
     </section>

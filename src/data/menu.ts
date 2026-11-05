@@ -37,7 +37,7 @@ export const MENU: Item[] = [
   { id: 'pizza-kebab', num: 5, name: 'Pizza kebab', tags: D, img: 'plato-pizza-kebab',
     prices: [{ value: e('7,00') }, { label: 'Grande', value: e('+1,00') }, { label: 'Menú', value: e('9,50'), note: 'patatas + bebida', menu: true }] },
 
-  { id: 'tacos-frances', num: 1, name: 'Tacos francés normal', desc: 'Pechugas de pollo rebozadas caseras, queso mozzarella, salsa Tacos Argelina, salsa blanca y verduras a tu gusto.', tags: ['tacos', 'pollo'], poster: 'tacos-plancha-poster.jpg',
+  { id: 'tacos-frances', num: 1, name: 'Tacos francés normal', desc: 'Pechugas de pollo rebozadas, queso mozzarella, salsa Tacos Argelina, salsa blanca y verduras a tu gusto.', tags: ['tacos', 'pollo'], poster: 'tacos-plancha-poster.jpg',
     prices: [{ value: e('6,00') }, { label: 'XXXL (doble)', value: e('8,00') }, { label: 'Menú', value: e('8,00'), note: 'patatas + bebida', menu: true }] },
   { id: 'tacos-kebab', num: 2, name: 'Tacos con carne kebab', desc: 'Carne kebab de pollo y ternera, queso mozzarella, salsa Tacos Argelina, salsa blanca y verduras a tu gusto.', tags: ['tacos', 'pollo', 'ternera'], poster: 'tacos-bandejas-poster.jpg',
     prices: [{ value: e('6,00') }, { label: 'XXXL (doble)', value: e('8,00') }, { label: 'Menú', value: e('8,00'), note: 'patatas + bebida', menu: true }] },

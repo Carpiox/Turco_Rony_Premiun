@@ -1,24 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { m } from 'framer-motion'
 import { imgSrc } from '../data/menu'
 import { media } from '../data/site'
 import { LoopVideo } from './LoopVideo'
 import { Reveal } from './Reveal'
 import { PlayIcon } from './Icons'
 
-type G = { id: string; kind: 'img' | 'vid'; name: string; alt: string; ratio: string }
+type G = { id: string; kind: 'img' | 'vid'; name: string; alt: string }
+// Máximo 6 elementos, todos cuadrados (1:1) con el mismo tratamiento de color
 const GALLERY: G[] = [
-  { id: 'p1', kind: 'img', name: 'tacos-xl-gratinado', alt: 'Tacos XXL gratinados con queso frente al rulo de döner', ratio: '10/9' },
-  { id: 'v1', kind: 'vid', name: 'gratinado-horno', alt: 'Tacos gratinados saliendo del horno', ratio: '9/14' },
-  { id: 'p2', kind: 'img', name: 'tacos-pollo-crispy', alt: 'Tacos con tiras de pollo crispy y pimientos', ratio: '4/3' },
-  { id: 'v2', kind: 'vid', name: 'prep-relleno', alt: 'Preparando el relleno de un taco', ratio: '9/14' },
-  { id: 'p3', kind: 'img', name: 'tacos-horno', alt: 'Taco gratinado sobre bandeja de madera', ratio: '3/4' },
-  { id: 'v3', kind: 'vid', name: 'tacos-plancha', alt: 'Taco marcado en la plancha', ratio: '9/14' },
-  { id: 'p4', kind: 'img', name: 'tacos-especial', alt: 'Taco especial abierto, con pollo y queso', ratio: '3/4' },
-  { id: 'v4', kind: 'vid', name: 'prep-corte', alt: 'Cortando un taco especial', ratio: '9/14' },
-  { id: 'p5', kind: 'img', name: 'tacos-capas', alt: 'Corte de taco con capas de carne y queso', ratio: '3/4' },
-  { id: 'v5', kind: 'vid', name: 'tacos-bandejas', alt: 'Bandejas de tacos con patatas listas para servir', ratio: '9/14' },
-  { id: 'p6', kind: 'img', name: 'tacos-tiras', alt: 'Taco gratinado con tiras de pollo crispy', ratio: '3/4' },
+  { id: 'p1', kind: 'img', name: 'tacos-xl-gratinado', alt: 'Dos tacos gratinados sobre una bandeja de madera, con el rulo de döner detrás' },
+  { id: 'v1', kind: 'vid', name: 'gratinado-horno', alt: 'Tacos gratinados con el queso dorado' },
+  { id: 'p2', kind: 'img', name: 'tacos-capas', alt: 'Taco cortado: capas de carne y queso' },
+  { id: 'v2', kind: 'vid', name: 'prep-relleno', alt: 'Preparando el relleno de un taco' },
+  { id: 'v3', kind: 'vid', name: 'prep-corte', alt: 'Cortando un taco especial' },
+  { id: 'v4', kind: 'vid', name: 'tacos-bandejas', alt: 'Bandejas de tacos con patatas' },
 ]
 
 function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => void; onNav: (d: number) => void }) {
@@ -70,28 +65,21 @@ export function Gallery() {
   const nav = useCallback((d: number) => setOpen((i) => (i === null ? i : (i + d + GALLERY.length) % GALLERY.length)), [])
 
   return (
-    <section id="galeria" className="py-20 sm:py-28" aria-labelledby="gal-t">
+    <section id="galeria" className="bg-ocre py-14 text-ink sm:py-20" aria-labelledby="gal-t">
       <div className="container-x">
-        <Reveal>
-          <p className="eyebrow">Galería de tacos</p>
-          <h2 id="gal-t" className="section-title mt-3">Del horno <span className="text-ocre-soft italic">a tu mano</span></h2>
-          <p className="mt-4 max-w-lg text-crema/75">Así se montan, se gratinan y salen. Toca una foto o un vídeo para verlo grande.</p>
-        </Reveal>
-        <div className="mt-8 columns-2 gap-3 sm:columns-3 sm:gap-4">
+        <Reveal><h2 id="gal-t" className="section-title">Mira cómo salen</h2></Reveal>
+        <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-4">
           {GALLERY.map((g, i) => (
-            <m.div key={g.id} className="mb-3 break-inside-avoid sm:mb-4" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '0px 0px -6% 0px' }} transition={{ duration: 0.6, delay: (i % 3) * 0.07 }}>
-              <button onClick={() => setOpen(i)} className="group relative block w-full overflow-hidden rounded-2xl border border-ocre/15 text-left" aria-label={`${g.kind === 'vid' ? 'Ver vídeo' : 'Ampliar foto'}: ${g.alt}`}>
-                {g.kind === 'img' ? (
-                  <img src={imgSrc(g.name).src} srcSet={imgSrc(g.name).srcSet} sizes="(min-width:640px) 33vw, 50vw" alt="" loading="lazy" decoding="async"
-                    style={{ aspectRatio: g.ratio }} className="w-full object-cover transition duration-700 group-hover:scale-105" />
-                ) : (
-                  <>
-                    <LoopVideo name={g.name} className="w-full" mode="view" ratio="2/3" />
-                    <span className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full bg-ink/70 text-ocre-soft" aria-hidden="true"><PlayIcon width={16} height={16} /></span>
-                  </>
-                )}
-              </button>
-            </m.div>
+            <button key={g.id} onClick={() => setOpen(i)} className="group relative block aspect-square overflow-hidden rounded-xl bg-ink ring-2 ring-ink" aria-label={`${g.kind === 'vid' ? 'Ver vídeo' : 'Ampliar foto'}: ${g.alt}`}>
+              {g.kind === 'img' ? (
+                <img src={imgSrc(g.name).src} srcSet={imgSrc(g.name).srcSet} sizes="(min-width:640px) 33vw, 50vw" alt="" width={640} height={640} loading="lazy" decoding="async" className="foto h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              ) : (
+                <>
+                  <LoopVideo name={g.name} className="foto h-full w-full" mode="view" />
+                  <span className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full bg-ink/75 text-ocre" aria-hidden="true"><PlayIcon width={16} height={16} /></span>
+                </>
+              )}
+            </button>
           ))}
         </div>
       </div>

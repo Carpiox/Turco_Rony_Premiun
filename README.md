@@ -21,3 +21,9 @@ Los originales viven en `public/media/raw/` (ignorado por git). Todo lo procesad
 - `site.platforms[].url`: enlaces de Glovo / Just Eat (si es `null`, no se muestran).
 - `REVIEWS`: reseñas reales de Google (vacío = la sección no aparece).
 - `PENDING`: datos legales del footer (titular, NIF, email) y lista de alérgenos.
+
+## [CONFIRMAR]
+Lo que no está confirmado por el dueño no se muestra en la web. Está documentado en `src/data/confirmar.ts`.
+
+## Capturas
+`docs/capturas/` (390 px y 1440 px).

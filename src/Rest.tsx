@@ -20,7 +20,6 @@ export default function Rest() {
         <>
           <TacosSection />
           <TacoBuilder />
-          <div className="kilim" aria-hidden="true" />
           <Gallery />
           <DonerSection />
           <Menu />

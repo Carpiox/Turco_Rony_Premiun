@@ -1,14 +1,5 @@
 import { useEffect, useState } from 'react'
 
-// Horario: 12:30-16:00 y 19:00-00:45, todos los días (hora de Madrid)
-export function isOpenNow(date = new Date()): boolean {
-  const parts = new Intl.DateTimeFormat('es-ES', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(date)
-  const h = Number(parts.find((p) => p.type === 'hour')!.value) % 24
-  const m = Number(parts.find((p) => p.type === 'minute')!.value)
-  const t = h * 60 + m
-  return (t >= 750 && t < 960) || t >= 1140 || t < 45
-}
-
 function madridMinutes(date: Date) {
   const parts = new Intl.DateTimeFormat('es-ES', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(date)
   return (Number(parts.find((p) => p.type === 'hour')!.value) % 24) * 60 + Number(parts.find((p) => p.type === 'minute')!.value)
@@ -29,17 +20,6 @@ export function useDeliveryNow() {
     return () => clearInterval(id)
   }, [])
   return v
-}
-
-export function useOpenNow() {
-  const [open, setOpen] = useState<boolean | null>(null)
-  useEffect(() => {
-    const tick = () => setOpen(isOpenNow())
-    tick()
-    const id = setInterval(tick, 60_000)
-    return () => clearInterval(id)
-  }, [])
-  return open
 }
 
 export function useInView<T extends Element>(rootMargin = '200px') {

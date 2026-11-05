@@ -16,7 +16,6 @@ export const site = {
   city: '30530 Cieza, Murcia',
   instagram: 'https://www.instagram.com/kebab_cieza/',
   tiktok: 'https://www.tiktok.com/@kebap_cieza',
-  hoursText: ['12:30 – 16:00', '19:00 – 00:45'],
   // Plataformas de reparto: rellenar la url cuando se sepa (si es null, no se muestra)
   platforms: [
     { name: 'Glovo', url: null as string | null },

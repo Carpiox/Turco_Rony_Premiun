@@ -17,7 +17,7 @@ GitHub Pages con `.github/workflows/deploy.yml` (push a `main`). En *Settings �
 Los originales viven en `public/media/raw/` (ignorado por git). Todo lo procesado está en `public/media/`.
 
 ## Datos que se rellenan en `src/data/site.ts`
-- `site.delivery.minOrder` / `site.delivery.hours`: pedido mínimo y horario de reparto (se muestran solos al rellenarlos).
+- `site.delivery`: envío 1 €, pedido mínimo 6 €. `hours` (horario de reparto) está en `null` y no se muestra hasta confirmarlo.
 - `site.platforms[].url`: enlaces de Glovo / Just Eat (si es `null`, no se muestran).
 - `REVIEWS`: reseñas reales de Google (vacío = la sección no aparece).
 - `PENDING`: datos legales del footer (titular, NIF, email) y lista de alérgenos.

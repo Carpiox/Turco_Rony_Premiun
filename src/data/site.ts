@@ -25,8 +25,8 @@ export const site = {
   delivery: {
     price: '1 €',
     area: 'Cieza',
-    // [CONFIRMAR] pedido mínimo y horario de reparto: rellenar y se mostrarán solos
-    minOrder: null as string | null, // p. ej. '10 €'
+    minOrder: '6 €',
+    // [CONFIRMAR] horario de reparto: mientras sea null no se muestra en ningún sitio
     hours: null as string | null, // p. ej. '12:30–16:00 y 19:00–00:30'
   },
 }
@@ -37,6 +37,9 @@ export const REVIEWS: Review[] = []
 
 export const waLink = (text: string) =>
   `https://wa.me/${site.phone.replace('+', '')}?text=${encodeURIComponent(text)}`
+/** "Envío por solo 1 € · Pedido mínimo 6 €" (+ horario si se confirma) */
+export const deliveryText = () =>
+  [`Envío por solo ${site.delivery.price}`, site.delivery.minOrder && `Pedido mínimo ${site.delivery.minOrder}`].filter(Boolean).join(' · ')
 export const WA_ORDER = waLink('¡Hola! Quiero hacer un pedido en Döner Kebab Cieza 🥙')
 
 export const mapsQuery = encodeURIComponent(`${site.name}, ${site.street}, ${site.city}`)

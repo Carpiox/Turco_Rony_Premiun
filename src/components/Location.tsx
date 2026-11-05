@@ -24,6 +24,7 @@ export function Location() {
           </div>
           <div className="mt-8 rounded-2xl border border-dashed border-ocre/40 p-4 text-sm text-crema/80">
             <DeliveryChip />
+            <p className="mt-2">Reparto a domicilio dentro de {site.delivery.area}.</p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {site.platforms.filter((d) => d.url).map((d) => (
                 <li key={d.name}><a className="rounded-full border border-ocre/50 px-3 py-1.5 hover:bg-ocre hover:text-ink" href={d.url!} target="_blank" rel="noopener noreferrer">{d.name}</a></li>

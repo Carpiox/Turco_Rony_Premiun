@@ -14,20 +14,20 @@ export function Hero() {
 
       <div className="container-x relative flex flex-col items-center pb-20 pt-32">
         <h1 className="flex flex-col items-center">
-          <span className="hero-in eyebrow">Döner Kebab Cieza · el taco de la Gran Vía</span>
+          <span className="eyebrow">Döner Kebab Cieza · el taco de la Gran Vía</span>
           <span className="mt-4 block text-[clamp(3.4rem,17vw,9.5rem)] leading-[.88] tracking-tight">
             Tacos<br /><span className="italic text-ocre-soft" style={{ fontVariationSettings: "'wght' 700" }}>gratinados</span>
           </span>
         </h1>
-        <p className="hero-in d2 mt-5 max-w-md text-lg leading-snug text-crema/95 sm:text-xl">
+        <p className="mt-5 max-w-md text-lg leading-snug text-crema/95 sm:text-xl">
           Queso fundido, carne jugosa y salsa Tacos Argelina. A tu mesa o a tu puerta.
         </p>
-        <div className="hero-in d3 mt-7 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
+        <div className="mt-7 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
           <a href={WA_ORDER} target="_blank" rel="noopener noreferrer" className="btn btn-wa"><WhatsAppIcon />Pedir por WhatsApp</a>
           <a href="#tacos" className="btn btn-ghost">Ver tacos</a>
         </div>
-        <DeliveryChip className="hero-in d3 mt-5" />
-        <p className="hero-in d3 mt-4 flex items-center gap-2 text-sm text-crema/85" aria-live="polite">
+        <DeliveryChip className="mt-5" />
+        <p className="mt-4 flex items-center gap-2 text-sm text-crema/85" aria-live="polite">
           <span className={`h-2.5 w-2.5 rounded-full ${open === null ? 'bg-sand/50' : open ? 'bg-[#34d27b] shadow-[0_0_10px_#34d27b]' : 'bg-ember-glow'}`} aria-hidden="true" />
           {open === null ? '' : open ? 'Abierto ahora · ' : 'Cerrado ahora · '}{site.hoursText.join(' y ')}
         </p>

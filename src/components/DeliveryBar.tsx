@@ -7,8 +7,8 @@ export function DeliveryBar() {
   const extra = [d.minOrder && `pedido mínimo ${d.minOrder}`, d.hours && `reparto ${d.hours}`].filter(Boolean).join(' · ')
   return (
     <div role="region" aria-label="Envío a domicilio" className="fixed inset-x-0 top-0 z-50 flex h-9 items-center justify-center gap-2 bg-ember px-3 text-center text-[13px] font-bold leading-none text-white shadow-[0_2px_14px_rgba(0,0,0,.45)] sm:text-sm">
-      <ScooterIcon width={18} height={18} className="shrink-0 text-ocre-soft" />
-      <span>Envío a domicilio por solo <span className="text-ocre-soft">{d.price}</span> en {d.area}</span>
+      <ScooterIcon width={18} height={18} className="shrink-0 text-white" />
+      <span>Envío a domicilio por solo <span className="underline decoration-white/60 underline-offset-2">{d.price}</span> en {d.area}</span>
       {extra && <span className="hidden font-medium text-white/85 md:inline">· {extra}</span>}
     </div>
   )

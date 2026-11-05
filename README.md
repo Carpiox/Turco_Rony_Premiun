@@ -16,5 +16,8 @@ GitHub Pages con `.github/workflows/deploy.yml` (push a `main`). En *Settings �
 ## Medios
 Los originales viven en `public/media/raw/` (ignorado por git). Todo lo procesado está en `public/media/`.
 
-## Pendientes `[ENTRE CORCHETES]`
-Búscalos con `grep -rn "\[" src index.html | grep "[A-ZÁÉÍÓÚ]\{3,\}"`. Datos en `src/data/site.ts` (`PENDING`, `site.delivery`).
+## Datos que se rellenan en `src/data/site.ts`
+- `site.delivery.minOrder` / `site.delivery.hours`: pedido mínimo y horario de reparto (se muestran solos al rellenarlos).
+- `site.platforms[].url`: enlaces de Glovo / Just Eat (si es `null`, no se muestran).
+- `REVIEWS`: reseñas reales de Google (vacío = la sección no aparece).
+- `PENDING`: datos legales del footer (titular, NIF, email) y lista de alérgenos.

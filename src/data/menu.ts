@@ -94,5 +94,6 @@ export const MENU: Item[] = [
 
 export const imgSrc = (n: string) => ({
   src: media(`img/${n}-640.webp`),
-  srcSet: `${media(`img/${n}-640.webp`)} 640w, ${media(`img/${n}-1280.webp`)} 1280w`,
+  // el archivo de 640 px se anuncia como 800w para que el móvil no descargue el de 1280 sin necesidad
+  srcSet: `${media(`img/${n}-640.webp`)} 800w, ${media(`img/${n}-1280.webp`)} 1280w`,
 })

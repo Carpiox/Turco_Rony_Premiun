@@ -42,13 +42,8 @@ photo tacos-capas          FotoTacoPartido.jpeg
 ffmpeg -v error -y -i $R/TacoXLGratinado.jpeg -vf "crop=922:830:0:410" -frames:v 1 -q:v 2 /tmp/_taco_xl.jpg
 cp /tmp/_taco_xl.jpg /tmp/_taco_xl_src.jpg
 R_BAK=$R; R=/tmp; photo tacos-xl-gratinado _taco_xl_src.jpg; R=$R_BAK
-# Platos recortados de los paneles de carta (sin latas ni marcas ajenas)
-photo plato-kebab        CartaKebab.jpeg           980x790+110+420
-photo plato-durum        CartaDurum.jpeg           1180x660+100+400
-photo plato-durum-grat   CartaDurumGratinado.jpeg  1340x590+20+280
-photo plato-tapa         Tapa.jpeg                 1150x720+520+330
-photo plato-mesopotamia  platoMesopotamia.jpeg     1110x900+90+400
-photo plato-pizza-kebab  PizzaTurcaPizzaKebab.jpeg 700x650+1340+760
-photo plato-degustacion  PlatoDegustacion.jpeg     1300x700+0+650
-photo plato-palomitas    PalomitasConQuesoFundidoYTirasDePollo.jpeg 680x470+1310+200
-photo plato-tiras-pollo  PalomitasConQuesoFundidoYTirasDePollo.jpeg 900x400+1090+870
+
+# Hero: la foto más nítida (Tako.jpeg, 1600x1200) sin ampliar por encima de su resolución
+for w in 800 1600; do
+  convert $R/Tako.jpeg -auto-orient -auto-gamma -modulate 102,108 -unsharp 0x0.7 -strip -resize "${w}x>" -quality 82 "$I/hero-taco-$w.webp"
+done

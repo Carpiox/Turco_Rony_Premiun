@@ -15,29 +15,23 @@
 @layer components {
   .container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
   .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-bold transition duration-200 active:scale-[.97]; }
-  .btn-wa { @apply bg-[#25d366] text-[#07210f] shadow-[0_8px_28px_-8px_rgba(37,211,102,.7)] hover:bg-[#3be37c]; }
-  .btn-ghost { @apply border border-crema/40 text-crema hover:border-ocre hover:text-ocre-soft backdrop-blur-sm bg-ink/30; }
-  .eyebrow { @apply text-xs font-bold uppercase tracking-[.22em] text-ocre; }
-  .section-title { @apply text-[2rem] leading-[1.05] sm:text-5xl; }
+  .btn-wa { @apply bg-[#25d366] text-[#07210f] shadow-[0_8px_24px_-10px_rgba(37,211,102,.8)] hover:bg-[#3be37c]; }
+  .btn-ghost { @apply border-2 border-current bg-transparent hover:bg-white/10; }
+  .section-title { @apply text-[2.6rem] leading-[.95] sm:text-6xl; }
+  /* número amarillo como en el panel de la carta */
+  .num { @apply inline-grid min-w-[1.7rem] place-items-center bg-ocre px-1.5 text-sm font-extrabold leading-[1.5rem] text-ink; font-family: theme('fontFamily.sans'); }
+  /* mismo tratamiento de color en todas las fotos */
+  .foto { filter: saturate(1.06) contrast(1.04); }
 }
 
-/* Motivo geométrico turco (kilim) como separador y textura */
+/* Motivo geométrico turco (kilim), solo en hero y footer */
 .kilim {
-  height: 18px;
-  background-color: theme('colors.ember.deep');
+  height: 16px;
+  background-color: theme('colors.ink');
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18' viewBox='0 0 36 18'%3E%3Cpath d='M0 9 9 0l9 9-9 9zM18 9l9-9 9 9-9 9z' fill='%23d9a03a'/%3E%3Cpath d='M9 5l4 4-4 4-4-4zM27 5l4 4-4 4-4-4z' fill='%230e0907'/%3E%3C/svg%3E");
-  background-size: 36px 18px;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='16' viewBox='0 0 32 16'%3E%3Cpath d='M0 8 8 0l8 8-8 8zM16 8l8-8 8 8-8 8z' fill='%23f4c81c'/%3E%3Cpath d='M8 4l4 4-4 4-4-4zM24 4l4 4-4 4-4-4z' fill='%23c8202a'/%3E%3C/svg%3E");
+  background-size: 32px 16px;
 }
-.tile-bg {
-  background-image:
-    radial-gradient(circle at 20% 0%, rgba(194,48,31,.22), transparent 55%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 4l24 24-24 24L4 28z' fill='none' stroke='%23d9a03a' stroke-opacity='.09' stroke-width='1.5'/%3E%3Cpath d='M28 16l12 12-12 12-12-12z' fill='none' stroke='%23d9a03a' stroke-opacity='.07' stroke-width='1.5'/%3E%3C/svg%3E");
-}
-
-/* Hero: entrada con CSS puro para no retrasar el LCP */
-.hero-in { animation: fade-up .9s cubic-bezier(.2,.7,.2,1) both; }
-.hero-in.d1 { animation-delay: .12s } .hero-in.d2 { animation-delay: .24s } .hero-in.d3 { animation-delay: .36s }
 
 /* Döner SVG de reserva */
 @keyframes spin-strip { to { transform: translateX(-120px); } }
@@ -47,7 +41,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-in { animation: none; }
   .doner-strip, .flame { animation: none; }
 }
 .no-scrollbar { scrollbar-width: none; } .no-scrollbar::-webkit-scrollbar { display: none; }

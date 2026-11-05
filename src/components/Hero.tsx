@@ -8,14 +8,14 @@ export function Hero() {
   return (
     <section id="top" className="relative flex min-h-[100svh] items-end overflow-hidden">
       <LoopVideo name="hero-gratinado" mode="idle" eager className="absolute inset-0" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,9,7,.72)_0%,rgba(14,9,7,.25)_35%,rgba(14,9,7,.9)_88%,#0e0907_100%)]" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,9,7,.75)_0%,rgba(14,9,7,.5)_35%,rgba(14,9,7,.92)_80%,#0e0907_100%)]" aria-hidden="true" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_100%,rgba(194,48,31,.45),transparent_60%)]" aria-hidden="true" />
 
       <div className="container-x relative pb-16 pt-28 sm:pb-24">
         <p className="hero-in eyebrow flex items-center gap-2">
           <span>Cocina turca</span><span aria-hidden="true">·</span><span>Gran Vía, Cieza</span>
         </p>
-        <h1 className="hero-in d1 mt-3 text-[clamp(3.1rem,15vw,8.5rem)] leading-[.9] tracking-tight">
+        <h1 className="mt-3 text-[clamp(3.1rem,15vw,8.5rem)] leading-[.9] tracking-tight">
           Döner<br />
           <span className="text-ocre-soft italic" style={{ fontVariationSettings: "'wght' 700" }}>Kebab</span> Cieza
         </h1>

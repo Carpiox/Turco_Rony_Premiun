@@ -8,8 +8,8 @@ import { PlayIcon } from './Icons'
 
 type G = { id: string; kind: 'img' | 'vid'; name: string; alt: string; ratio: string }
 const GALLERY: G[] = [
+  { id: 'p1', kind: 'img', name: 'tacos-xl-gratinado', alt: 'Tacos XXL gratinados con queso frente al rulo de döner', ratio: '10/9' },
   { id: 'v1', kind: 'vid', name: 'gratinado-horno', alt: 'Tacos gratinados saliendo del horno', ratio: '9/14' },
-  { id: 'p1', kind: 'img', name: 'tacos-xl-gratinado', alt: 'Tacos XXL gratinados con queso frente al rulo de döner', ratio: '3/4' },
   { id: 'p2', kind: 'img', name: 'tacos-pollo-crispy', alt: 'Tacos con tiras de pollo crispy y pimientos', ratio: '4/3' },
   { id: 'v2', kind: 'vid', name: 'prep-relleno', alt: 'Preparando el relleno de un taco', ratio: '9/14' },
   { id: 'p3', kind: 'img', name: 'tacos-horno', alt: 'Taco gratinado sobre bandeja de madera', ratio: '3/4' },

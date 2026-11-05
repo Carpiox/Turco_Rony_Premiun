@@ -44,7 +44,7 @@ export function LoopVideo({ name, className = '', mode = 'view', alt = '', eager
   }, [mode])
 
   return (
-    <div ref={wrap} style={ratio ? { aspectRatio: ratio } : undefined} className={`relative overflow-hidden bg-coal ${className}`}>
+    <div ref={wrap} style={ratio ? { aspectRatio: ratio } : undefined} className={`${/absolute/.test(className) ? "" : "relative"} overflow-hidden bg-coal ${className}`}>
       <img src={poster} alt={alt} aria-hidden={alt ? undefined : true} className="absolute inset-0 h-full w-full object-cover"
         {...(eager ? { fetchPriority: 'high' as const } : { loading: 'lazy' as const })} decoding="async" />
       {mount && (

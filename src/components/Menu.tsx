@@ -72,7 +72,7 @@ export function Menu() {
             {FILTERS.map((x) => (
               <button key={x.id} onClick={() => setF(x.id)} aria-pressed={f === x.id}
                 className={`min-h-[44px] shrink-0 rounded-full border px-5 text-sm font-bold transition ${f === x.id ? 'border-ember bg-ember text-white shadow-[0_6px_20px_-6px_rgba(194,48,31,.9)]' : 'border-crema/20 text-crema/85 hover:border-ocre'}`}>
-                {x.label} <span className="ml-1 text-xs opacity-60">{count(x.id)}</span>
+                {x.label} <span className={`ml-1 text-xs ${f === x.id ? 'text-white' : 'opacity-75'}`}>{count(x.id)}</span>
               </button>
             ))}
           </div>

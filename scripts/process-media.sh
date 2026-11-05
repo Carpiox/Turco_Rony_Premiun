@@ -20,7 +20,8 @@ clip prep-relleno     VideoPreparacionTako.mp4 0   6   "$CROPB"
 clip prep-corte       VideoPreparacionTako.mp4 26  7   "$CROPB"
 clip tacos-bandejas   TacosTacosTacos.mp4      4   5   "$CROPB"
 clip tacos-plancha    TacosTacosTacos.mp4      15.5 5.5 "$CROPB"
-clip gratinado-horno  CarneTacos.mp4           64  6   "$CROPB"
+CROPT="crop=iw:trunc(ih*0.73/2)*2:0:0,scale='min(720,iw)':-2"  # el logo de TikTok llega al 85% de la altura
+clip gratinado-horno  CarneTacos.mp4           64  6   "$CROPT"
 
 # foto salida origen "geometria crop" (vacío = completa)
 photo() {
@@ -38,7 +39,7 @@ photo tacos-horno          TakoJuntoAPollo.jpeg
 photo tacos-especial       fotoTaco.jpeg
 photo tacos-capas          FotoTacoPartido.jpeg
 # TacoXL: quitar barras negras de la captura y la marca de TikTok
-ffmpeg -v error -y -i $R/TacoXLGratinado.jpeg -vf "crop=922:1230:0:410,delogo=x=665:y=855:w=235:h=50" -frames:v 1 -q:v 2 /tmp/_taco_xl.jpg
+ffmpeg -v error -y -i $R/TacoXLGratinado.jpeg -vf "crop=922:830:0:410" -frames:v 1 -q:v 2 /tmp/_taco_xl.jpg
 cp /tmp/_taco_xl.jpg /tmp/_taco_xl_src.jpg
 R_BAK=$R; R=/tmp; photo tacos-xl-gratinado _taco_xl_src.jpg; R=$R_BAK
 # Platos recortados de los paneles de carta (sin latas ni marcas ajenas)

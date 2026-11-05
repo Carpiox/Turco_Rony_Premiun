@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { mapsEmbed, mapsLink, site, WA_ORDER } from '../data/site'
 import { Reveal } from './Reveal'
-import { DeliveryChip } from './DeliveryBar'
+import { AfterHoursNote, DeliveryChip } from './DeliveryBar'
 import { ClockIcon, PhoneIcon, PinIcon, WhatsAppIcon } from './Icons'
 
 export function Location() {
@@ -22,9 +22,10 @@ export function Location() {
             <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="btn bg-ember text-white hover:bg-ember-glow"><PinIcon />Abrir en Google Maps</a>
             <a href={WA_ORDER} target="_blank" rel="noopener noreferrer" className="btn btn-wa"><WhatsAppIcon />Pedir por WhatsApp</a>
           </div>
+          <AfterHoursNote className="mt-3" />
           <div className="mt-8 rounded-2xl border border-dashed border-ocre/40 p-4 text-sm text-crema/80">
             <DeliveryChip />
-            <p className="mt-2">Reparto a domicilio dentro de {site.delivery.area}.</p>
+            <p className="mt-2">Reparto a domicilio dentro de {site.delivery.area}{site.delivery.hours && <>: <strong className="text-crema">{site.delivery.hours}</strong></>}.</p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {site.platforms.filter((d) => d.url).map((d) => (
                 <li key={d.name}><a className="rounded-full border border-ocre/50 px-3 py-1.5 hover:bg-ocre hover:text-ink" href={d.url!} target="_blank" rel="noopener noreferrer">{d.name}</a></li>

@@ -1,7 +1,7 @@
 import { WA_ORDER, site } from '../data/site'
 import { useOpenNow } from '../lib/open'
 import { LoopVideo } from './LoopVideo'
-import { DeliveryChip } from './DeliveryBar'
+import { AfterHoursNote, DeliveryChip, DeliveryHours } from './DeliveryBar'
 import { WhatsAppIcon } from './Icons'
 
 export function Hero() {
@@ -26,7 +26,9 @@ export function Hero() {
           <a href={WA_ORDER} target="_blank" rel="noopener noreferrer" className="btn btn-wa"><WhatsAppIcon />Pedir por WhatsApp</a>
           <a href="#tacos" className="btn btn-ghost">Ver tacos</a>
         </div>
-        <DeliveryChip className="mt-5" />
+        <AfterHoursNote reserve className="mt-3 text-center" />
+        <DeliveryChip className="mt-2" />
+        <DeliveryHours className="mt-2" />
         <p className="mt-4 flex items-center gap-2 text-sm text-crema/85" aria-live="polite">
           <span className={`h-2.5 w-2.5 rounded-full ${open === null ? 'bg-sand/50' : open ? 'bg-[#34d27b] shadow-[0_0_10px_#34d27b]' : 'bg-ember-glow'}`} aria-hidden="true" />
           {open === null ? '' : open ? 'Abierto ahora · ' : 'Cerrado ahora · '}{site.hoursText.join(' y ')}

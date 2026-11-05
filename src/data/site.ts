@@ -26,8 +26,7 @@ export const site = {
     price: '1 €',
     area: 'Cieza',
     minOrder: '6 €',
-    // [CONFIRMAR] horario de reparto: mientras sea null no se muestra en ningún sitio
-    hours: null as string | null, // p. ej. '12:30–16:00 y 19:00–00:30'
+    hours: '13:15–15:00 y 19:00–00:00', // horario de reparto
   },
 }
 
@@ -37,9 +36,10 @@ export const REVIEWS: Review[] = []
 
 export const waLink = (text: string) =>
   `https://wa.me/${site.phone.replace('+', '')}?text=${encodeURIComponent(text)}`
-/** "Envío por solo 1 € · Pedido mínimo 6 €" (+ horario si se confirma) */
-export const deliveryText = () =>
-  [`Envío por solo ${site.delivery.price}`, site.delivery.minOrder && `Pedido mínimo ${site.delivery.minOrder}`].filter(Boolean).join(' · ')
+/** "Envío por solo 1 € · Pedido mínimo 6 €"; con zona: "Envío por solo 1 € en Cieza · Pedido mínimo 6 €" */
+export const deliveryText = (withArea = false) =>
+  [`Envío por solo ${site.delivery.price}${withArea ? ` en ${site.delivery.area}` : ''}`, site.delivery.minOrder && `Pedido mínimo ${site.delivery.minOrder}`].filter(Boolean).join(' · ')
+export const deliveryHoursText = () => (site.delivery.hours ? `Reparto ${site.delivery.hours}` : null)
 export const WA_ORDER = waLink('¡Hola! Quiero hacer un pedido en Döner Kebab Cieza 🥙')
 
 export const mapsQuery = encodeURIComponent(`${site.name}, ${site.street}, ${site.city}`)

@@ -3,7 +3,7 @@ import { AnimatePresence, m, useReducedMotion, useScroll, useTransform } from 'f
 import type { MotionValue } from 'framer-motion'
 import { site, waLink } from '../data/site'
 import { Reveal } from './Reveal'
-import { DeliveryChip } from './DeliveryBar'
+import { AfterHoursNote, DeliveryChip, DeliveryHours } from './DeliveryBar'
 import { WhatsAppIcon } from './Icons'
 
 type Meat = 'pollo' | 'mixto'
@@ -205,7 +205,8 @@ export function TacoBuilder() {
                 <p className="max-w-[11rem] text-right text-xs text-sand">{extras.size ? 'Extras: te confirmamos el total por WhatsApp.' : 'Según carta.'}</p>
               </div>
               <a href={waLink(msg)} target="_blank" rel="noopener noreferrer" className="btn btn-wa mt-5 w-full"><WhatsAppIcon />Pedir mi taco por WhatsApp</a>
-              <div className="mt-3 flex justify-center"><DeliveryChip /></div>
+              <AfterHoursNote className="mx-auto mt-3 text-center" />
+              <div className="mt-3 flex flex-col items-center gap-1"><DeliveryChip /><DeliveryHours /></div>
             </div>
           </div>
         </div>

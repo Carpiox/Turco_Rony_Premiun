@@ -43,4 +43,7 @@ export const WA_ORDER = waLink('¡Hola! Quiero hacer un pedido en Döner Kebab C
 
 export const mapsQuery = encodeURIComponent(`${site.name}, ${site.street}, ${site.city}`)
 export const mapsEmbed = `https://www.google.com/maps?q=${mapsQuery}&output=embed`
-export const mapsLink = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
+// Ficha de Google Maps del local (enlace facilitado por el dueño)
+export const mapsLink = 'https://maps.app.goo.gl/gVyt2ziCXCXvshoJ8'
+// Valoración en Google (dato facilitado por el dueño)
+export const rating = { score: '4,3', outOf: '5', count: 206 }

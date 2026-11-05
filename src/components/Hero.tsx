@@ -1,7 +1,7 @@
-import { WA_ORDER, media } from '../data/site'
+import { WA_ORDER, mapsLink, media, rating } from '../data/site'
 import { LoopVideo } from './LoopVideo'
 import { AfterHoursNote, DeliveryChip } from './DeliveryBar'
-import { WhatsAppIcon } from './Icons'
+import { StarIcon, WhatsAppIcon } from './Icons'
 
 /** Hero: la foto real más nítida (1600 px) arriba en móvil y a la derecha en escritorio; titular sobre rojo sólido. */
 export function Hero() {
@@ -25,6 +25,9 @@ export function Hero() {
 
         <div className="container-x relative pb-14 pt-16 lg:order-1 lg:max-w-none lg:py-24 lg:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-12">
           <p className="text-sm font-bold uppercase tracking-wide text-crema">Döner Kebab Cieza</p>
+          <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-center gap-1.5 text-sm text-crema underline-offset-4 hover:underline" aria-label={`Valoración en Google: ${rating.score} de ${rating.outOf}, ${rating.count} valoraciones`}>
+            <StarIcon width={16} height={16} className="text-ocre" /><strong>{rating.score}</strong>/{rating.outOf} · {rating.count} valoraciones en Google
+          </a>
           <h1 className="mt-2 text-[clamp(3.2rem,15.5vw,7.4rem)] leading-[.88] tracking-tight">
             Tacos<br /><span className="text-ocre">gratinados</span>
           </h1>

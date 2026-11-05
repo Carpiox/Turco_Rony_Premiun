@@ -11,5 +11,5 @@ export const CONFIRMAR = [
   'Precio de las bebidas (no aparece en los paneles).',
   'IVA incluido en los precios.',
   'Qué foto corresponde exactamente a cada taco (hoy son fotos de referencia de los tacos del local).',
-  'Reseñas de Google, enlaces de Glovo y Just Eat, y datos legales del titular (NIF, email) y alérgenos por plato.',
+  'Textos de reseñas de Google (la puntuación 4,3/5 y las 206 valoraciones las dio el dueño; actualizar si cambian), enlaces de Glovo y Just Eat, y datos legales del titular (NIF, email) y alérgenos por plato.',
 ]

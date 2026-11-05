@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { mapsEmbed, mapsLink, site, WA_ORDER } from '../data/site'
+import { mapsEmbed, mapsLink, rating, site, WA_ORDER } from '../data/site'
 import { Reveal } from './Reveal'
-import { PhoneIcon, PinIcon, WhatsAppIcon } from './Icons'
+import { PhoneIcon, PinIcon, StarIcon, WhatsAppIcon } from './Icons'
 
 export function Location() {
   const [map, setMap] = useState(false)
@@ -15,7 +15,10 @@ export function Location() {
             <address className="text-xl font-bold not-italic leading-snug">{site.street}<br /><span className="font-medium">{site.city}</span></address>
           </div>
           <div className="mt-6 border-t-2 border-crema/30 pt-4">
-            <p className="text-lg"><strong>Reparto:</strong> {site.delivery.hours?.replace(' y ', ' y ')}</p>
+            <p className="text-lg"><strong>Reparto:</strong> {site.delivery.hours}</p>
+            <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1.5 underline underline-offset-4">
+              <StarIcon width={18} height={18} className="text-ocre" /><strong>{rating.score}</strong>/{rating.outOf} · {rating.count} valoraciones en Google
+            </a>
           </div>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href={WA_ORDER} data-hide-fab target="_blank" rel="noopener noreferrer" className="btn btn-wa"><WhatsAppIcon />Pedir por WhatsApp</a>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { m } from 'framer-motion'
-import { FILTERS, MENU, imgSrc } from '../data/menu'
+import { FILTERS, MENU as ALL, imgSrc } from '../data/menu'
 import type { Item, Tag } from '../data/menu'
 import { media } from '../data/site'
 import { Reveal } from './Reveal'
@@ -53,6 +53,9 @@ function Card({ item, i }: { item: Item; i: number }) {
   )
 }
 
+const MENU = ALL.filter((i) => !i.tags.includes('tacos'))
+const SECONDARY_FILTERS = FILTERS.filter((x) => x.id !== 'tacos')
+
 export function Menu() {
   const [f, setF] = useState<Tag | 'todo'>('todo')
   const items = MENU.filter((i) => f === 'todo' || i.tags.includes(f))
@@ -62,14 +65,14 @@ export function Menu() {
     <section id="carta" className="relative py-20 sm:py-28" aria-labelledby="carta-t">
       <div className="container-x">
         <Reveal>
-          <p className="eyebrow">Nuestra carta</p>
-          <h2 id="carta-t" className="section-title mt-3 max-w-xl">Elige tu <span className="text-ocre-soft italic">antojo</span></h2>
-          <p className="mt-4 max-w-lg text-crema/75">Todos los menús llevan patatas y bebida. Los dürum, kebab y tacos puedes pedirlos en grande o XXXL.</p>
+          <p className="eyebrow">Y además…</p>
+          <h2 id="carta-t" className="section-title mt-3 max-w-xl">El resto de la <span className="text-ocre-soft italic">carta</span></h2>
+          <p className="mt-4 max-w-lg text-crema/75">Kebab, dürum, platos y entrantes. Todos los menús llevan patatas y bebida. Los tacos, arriba.</p>
         </Reveal>
 
         <div className="sticky top-[6.25rem] z-20 -mx-4 mt-8 bg-ink/90 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6" role="group" aria-label="Filtrar la carta">
           <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
-            {FILTERS.map((x) => (
+            {SECONDARY_FILTERS.map((x) => (
               <button key={x.id} onClick={() => setF(x.id)} aria-pressed={f === x.id}
                 className={`min-h-[44px] shrink-0 rounded-full border px-5 text-sm font-bold transition ${f === x.id ? 'border-ember bg-ember text-white shadow-[0_6px_20px_-6px_rgba(194,48,31,.9)]' : 'border-crema/20 text-crema/85 hover:border-ocre'}`}>
                 {x.label} <span className={`ml-1 text-xs ${f === x.id ? 'text-white' : 'opacity-75'}`}>{count(x.id)}</span>
@@ -82,7 +85,7 @@ export function Menu() {
           {items.map((it, i) => <Card key={it.id} item={it} i={i} />)}
         </div>
         <p className="mt-8 text-sm text-sand">
-          Precios con IVA incluido [CONFIRMAR]. ¿Dudas con alérgenos o vegetarianos? <a className="underline decoration-ocre underline-offset-4" href="#legal-alergenos">Mira la nota de alérgenos</a>.
+          ¿Dudas con alérgenos o vegetarianos? <a className="underline decoration-ocre underline-offset-4" href="#legal-alergenos">Mira la nota de alérgenos</a>.
         </p>
       </div>
     </section>

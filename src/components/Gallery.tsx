@@ -73,8 +73,9 @@ export function Gallery() {
     <section id="galeria" className="py-20 sm:py-28" aria-labelledby="gal-t">
       <div className="container-x">
         <Reveal>
-          <p className="eyebrow">Galería</p>
+          <p className="eyebrow">Galería de tacos</p>
           <h2 id="gal-t" className="section-title mt-3">Del horno <span className="text-ocre-soft italic">a tu mano</span></h2>
+          <p className="mt-4 max-w-lg text-crema/75">Así se montan, se gratinan y salen. Toca una foto o un vídeo para verlo grande.</p>
         </Reveal>
         <div className="mt-8 columns-2 gap-3 sm:columns-3 sm:gap-4">
           {GALLERY.map((g, i) => (

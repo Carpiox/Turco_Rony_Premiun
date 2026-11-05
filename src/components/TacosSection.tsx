@@ -17,10 +17,10 @@ function Big({ t, i }: { t: Taco; i: number }) {
         {ph && <img src={ph.src} srcSet={ph.srcSet} sizes="(min-width:768px) 560px, 94vw" alt={`Foto real de ${t.name}`} width={800} height={1000} loading="lazy" decoding="async"
           className="absolute inset-0 -z-10 h-full w-full object-cover transition duration-[1400ms] group-hover:scale-105" />}
         <Steam />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(14,9,7,.15)_0%,rgba(14,9,7,.1)_30%,rgba(14,9,7,.88)_66%,#0e0907_100%)]" aria-hidden="true" />
-        <div className="p-6 pt-40 sm:p-8">
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(14,9,7,.1)_0%,rgba(14,9,7,.3)_26%,rgba(14,9,7,.92)_52%,#0e0907_100%)]" aria-hidden="true" />
+        <div className="p-6 pt-48 sm:p-8">
           <p className="eyebrow">{t.kicker}</p>
-          <h3 className="mt-1 text-[2.1rem] leading-[1.02] sm:text-4xl">{t.name}</h3>
+          <h3 className="mt-1 text-[2.1rem] leading-[1.02] drop-shadow-[0_2px_10px_rgba(0,0,0,.8)] sm:text-4xl">{t.name}</h3>
           <ul className="mt-4 flex flex-wrap gap-2" aria-label="Ingredientes">
             {t.ingredients.map((x) => <li key={x} className="rounded-full border border-crema/25 bg-ink/50 px-3 py-1 text-[13px] text-crema/90 backdrop-blur-sm">{x}</li>)}
           </ul>

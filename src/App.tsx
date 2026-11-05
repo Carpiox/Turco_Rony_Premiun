@@ -1,5 +1,6 @@
 import { DeliveryBar } from './components/DeliveryBar'
 import { TacosSection } from './components/TacosSection'
+import { TacoBuilder } from './components/TacoBuilder'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { DonerSection } from './components/DonerSection'
@@ -19,10 +20,11 @@ export default function App() {
       <main>
         <Hero />
         <TacosSection />
-        <DonerSection />
-        <Menu />
+        <TacoBuilder />
         <div className="kilim" aria-hidden="true" />
         <Gallery />
+        <DonerSection />
+        <Menu />
         <Reviews />
         <Location />
       </main>

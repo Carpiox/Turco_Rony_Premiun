@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://carpiox.github.io/Turco_Rony_Premiun/sitemap.xml

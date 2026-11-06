@@ -10,8 +10,15 @@ npm run media      # reprocesa public/media/raw -> public/media/{video,img} (ffm
 ```
 
 ## Despliegue
-GitHub Pages con `.github/workflows/deploy.yml` (push a `main`). En *Settings → Pages* elige **GitHub Actions**.
-`base` es `/Turco_Rony_Premiun/`; con dominio propio: `VITE_BASE=/ npm run build` y cambia las URLs de `index.html`, `robots.txt` y `sitemap.xml`.
+
+| Destino | Variables de entorno | Build |
+|---|---|---|
+| GitHub Pages (por defecto) | ninguna | `npm run build` (workflow `.github/workflows/deploy.yml`, push a `main`) |
+| Cloudflare Pages / dominio propio | `VITE_BASE=/` y `VITE_SITE_URL=https://tu-dominio.com` | `npm ci && npm run build`, salida `dist` |
+
+`VITE_SITE_URL` es la URL pública absoluta del sitio. Con ella se generan canonical, `og:url`, `og:image`, la `url`/`image` del JSON-LD, `sitemap.xml` y `robots.txt`. Si no se define (con `VITE_BASE` definido), esos campos se omiten y el build avisa, en vez de publicar URLs de otro sitio.
+
+`npx vite preview` lee la misma configuración: para previsualizar el build de Cloudflare en la raíz usa `VITE_BASE=/ npx vite preview`.
 
 ## Medios
 Los originales viven en `public/media/raw/` (ignorado por git). Todo lo procesado está en `public/media/`.

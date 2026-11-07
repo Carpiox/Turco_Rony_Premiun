@@ -2,6 +2,7 @@ import { Component, Suspense, lazy, useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import { canWebGL, useInView } from '../lib/open'
 import { DonerFallback } from './DonerFallback'
+import { LoopVideo } from './LoopVideo'
 
 const Doner3D = lazy(() => import('./Doner3D'))
 
@@ -29,6 +30,11 @@ export function DonerSection() {
           <h2 id="rulo-t" className="text-3xl leading-tight sm:text-5xl">Pollo y ternera, del rulo al taco</h2>
           <a href="#carta" className="btn btn-ghost mt-5 text-ocre">Ver la carta</a>
         </div>
+      </div>
+      <div className="container-x mt-6 grid grid-cols-3 gap-2 sm:mt-8 sm:gap-4" role="group" aria-label="El rulo de pollo y ternera, en vídeo">
+        {['rulo-1', 'rulo-2', 'rulo-3'].map((n) => (
+          <LoopVideo key={n} name={n} mode="view" ratio="3/4" className="rounded-xl ring-1 ring-crema/15" />
+        ))}
       </div>
     </section>
   )

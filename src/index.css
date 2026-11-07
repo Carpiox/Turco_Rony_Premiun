@@ -1,0 +1,62 @@
+@import '@fontsource-variable/fraunces/wght.css';
+@import '@fontsource-variable/dm-sans/wght.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 7rem; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-ink text-crema font-sans antialiased; overflow-x: hidden; }
+  h1, h2, h3 { @apply font-display; font-variation-settings: 'wght' 800; letter-spacing: -0.01em; }
+  :focus-visible { outline: 3px solid theme('colors.ocre.soft'); outline-offset: 3px; border-radius: 6px; }
+  ::selection { background: theme('colors.ember.DEFAULT'); color: #fff; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+  .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-bold transition duration-200 active:scale-[.97]; }
+  .btn-wa { @apply bg-[#25d366] text-[#07210f] shadow-[0_8px_24px_-10px_rgba(37,211,102,.8)] hover:bg-[#3be37c]; }
+  .btn-ghost { @apply border-2 border-current bg-transparent hover:bg-white/10; }
+  .section-title { @apply text-[2.6rem] leading-[.95] sm:text-6xl; }
+  /* número amarillo como en el panel de la carta */
+  .num { @apply inline-grid min-w-[1.7rem] place-items-center bg-ocre px-1.5 text-sm font-extrabold leading-[1.5rem] text-ink; font-family: theme('fontFamily.sans'); }
+  /* mismo tratamiento de color en todas las fotos */
+  .foto { filter: saturate(1.06) contrast(1.04); }
+}
+
+/* Motivo geométrico turco (kilim), solo en hero y footer */
+.kilim {
+  height: 16px;
+  background-color: theme('colors.ink');
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='16' viewBox='0 0 32 16'%3E%3Cpath d='M0 8 8 0l8 8-8 8zM16 8l8-8 8 8-8 8z' fill='%23f4c81c'/%3E%3Cpath d='M8 4l4 4-4 4-4-4zM24 4l4 4-4 4-4-4z' fill='%23c8202a'/%3E%3C/svg%3E");
+  background-size: 32px 16px;
+}
+
+/* Döner SVG de reserva */
+@keyframes spin-strip { to { transform: translateX(-120px); } }
+.doner-strip { animation: spin-strip 3.2s linear infinite; }
+@keyframes flame { 0%,100% { opacity: .75; transform: scaleY(1) } 50% { opacity: 1; transform: scaleY(1.08) } }
+.flame { animation: flame 1.6s ease-in-out infinite; transform-origin: bottom; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .doner-strip, .flame { animation: none; }
+}
+.no-scrollbar { scrollbar-width: none; } .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Vapor + brillo (CSS puro, solo transform/opacity) */
+.steam .wisp { position: absolute; bottom: 38%; width: 22%; height: 38%; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(255,246,230,.55), rgba(255,246,230,0) 70%); filter: blur(9px);
+  animation: wisp-rise 5.5s ease-in infinite; will-change: transform, opacity; }
+.steam .w1 { left: 22%; animation-delay: 0s; } .steam .w2 { left: 44%; animation-delay: 1.9s; width: 26%; } .steam .w3 { left: 64%; animation-delay: 3.4s; }
+@keyframes wisp-rise {
+  0% { opacity: 0; transform: translateY(14%) scale(.7, .8); }
+  25% { opacity: .75; }
+  100% { opacity: 0; transform: translate(6%, -120%) scale(1.25, 1.5); }
+}
+.steam .shine { position: absolute; inset: -20% auto -20% -45%; width: 38%; transform: rotate(18deg) translateX(0);
+  background: linear-gradient(90deg, transparent, rgba(255,236,190,.28), transparent); mix-blend-mode: soft-light;
+  animation: shine-sweep 6.5s ease-in-out infinite; will-change: transform; }
+@keyframes shine-sweep { 0%, 55% { transform: rotate(18deg) translateX(0); } 100% { transform: rotate(18deg) translateX(520%); } }
+@media (prefers-reduced-motion: reduce) { .steam { display: none; } }

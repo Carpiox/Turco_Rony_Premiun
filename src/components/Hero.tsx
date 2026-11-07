@@ -25,7 +25,7 @@ export function Hero() {
 
         <div className="container-x relative pb-14 pt-16 lg:order-1 lg:max-w-none lg:py-24 lg:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-12">
           <p className="text-sm font-bold uppercase tracking-wide text-crema">Döner Kebab Cieza</p>
-          <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-center gap-1.5 text-sm text-crema underline-offset-4 hover:underline" aria-label={`Valoración en Google: ${rating.score} de ${rating.outOf}, ${rating.count} valoraciones`}>
+          <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-center gap-1.5 text-sm text-crema underline-offset-4 hover:underline">
             <StarIcon width={16} height={16} className="text-ocre" /><strong>{rating.score}</strong>/{rating.outOf} · {rating.count} valoraciones en Google
           </a>
           <h1 className="mt-2 text-[clamp(3.2rem,15.5vw,7.4rem)] leading-[.88] tracking-tight">
@@ -39,7 +39,7 @@ export function Hero() {
             <a href="#tacos" className="btn btn-ghost">Ver tacos</a>
           </div>
           <DeliveryChip className="mt-5 text-crema" />
-          <AfterHoursNote className="mt-3" />
+          <AfterHoursNote className="mt-3 text-crema" />
         </div>
       </div>
       <div className="kilim" aria-hidden="true" />

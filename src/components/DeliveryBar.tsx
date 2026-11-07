@@ -27,5 +27,5 @@ export function DeliveryChip({ className = '' }: { className?: string }) {
 export function AfterHoursNote({ className = '' }: { className?: string }) {
   const inHours = useDeliveryNow()
   if (inHours !== false) return null
-  return <p role="status" className={`max-w-xs text-xs leading-snug opacity-80 ${className}`}>Ahora estamos fuera de horario de reparto; te respondemos en cuanto abramos.</p>
+  return <p role="status" className={`max-w-xs text-xs leading-snug ${className}`}>Ahora estamos fuera de horario de reparto; te respondemos en cuanto abramos.</p>
 }

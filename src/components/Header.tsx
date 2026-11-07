@@ -22,12 +22,12 @@ export function Header() {
   return (
     <header className={`fixed inset-x-0 top-9 z-40 transition-colors duration-300 bg-ink shadow-[0_1px_0_rgba(244,200,28,.25)]`}>
       <div className="container-x flex h-16 items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5" aria-label="Döner Kebab Cieza, inicio">
+        <a href="#top" className="flex items-center gap-2.5" aria-label="Istambul Döner Kebab Cieza, inicio">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-ocre text-ink" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24"><rect x="11" y="1" width="2" height="22" rx="1" fill="currentColor" /><path d="M5 5h14l-2 14H7z" fill="currentColor" opacity=".9" /><path d="M7 9h10M7.6 13h8.8" stroke="#c8202a" strokeWidth="1.5" /></svg>
           </span>
           <span className="font-display text-[1.05rem] leading-none" style={{ fontVariationSettings: "'wght' 800" }}>
-            DÖNER KEBAB<br /><span className="text-ocre text-[.8rem] tracking-[.3em]">CIEZA</span>
+            ISTAMBUL<br /><span className="text-ocre text-[.62rem] tracking-[.17em]">DÖNER KEBAB CIEZA</span>
           </span>
         </a>
 

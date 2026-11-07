@@ -9,7 +9,7 @@ export const PENDING = {
 }
 
 export const site = {
-  name: 'Döner Kebab Cieza',
+  name: 'Istambul Döner Kebab Cieza',
   phone: '+34631188411',
   phoneDisplay: '631 18 84 11',
   street: 'Gran Vía Juan Carlos I, 30',
@@ -39,7 +39,7 @@ export const waLink = (text: string) =>
 export const deliveryText = (withArea = false) =>
   [`Envío por solo ${site.delivery.price}${withArea ? ` en ${site.delivery.area}` : ''}`, site.delivery.minOrder && `Pedido mínimo ${site.delivery.minOrder}`].filter(Boolean).join(' · ')
 export const deliveryHoursText = () => (site.delivery.hours ? `Reparto ${site.delivery.hours}` : null)
-export const WA_ORDER = waLink('¡Hola! Quiero hacer un pedido en Döner Kebab Cieza 🥙')
+export const WA_ORDER = waLink('¡Hola! Quiero hacer un pedido en Istambul Döner Kebab Cieza 🥙')
 
 export const mapsQuery = encodeURIComponent(`${site.name}, ${site.street}, ${site.city}`)
 export const mapsEmbed = `https://www.google.com/maps?q=${mapsQuery}&output=embed`

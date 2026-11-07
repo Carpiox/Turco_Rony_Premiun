@@ -47,3 +47,11 @@ R_BAK=$R; R=/tmp; photo tacos-xl-gratinado _taco_xl_src.jpg; R=$R_BAK
 for w in 800 1600; do
   convert $R/Tako.jpeg -auto-orient -auto-gamma -modulate 102,108 -unsharp 0x0.7 -strip -resize "${w}x>" -quality 82 "$I/hero-taco-$w.webp"
 done
+
+# --- Rulos (vídeos de WhatsApp, 2026-11-07). Descartados: 01.26.37 (grabación de pantalla con texto encima) y
+#     01.29.25 (barras negras, imagen útil de ~340 px y texto "Tostado" dentro de la imagen).
+NOSCALE="scale='min(720,iw)':-2"
+clip rulo-1 "WhatsApp Video 2026-11-07 at 01.28.00.mp4" 4.5 5 "$NOSCALE"
+clip rulo-2 "WhatsApp Video 2026-11-07 at 01.28.38.mp4" 2.2 5 "$NOSCALE"
+# 01.29.40: lleva grabado un usuario ajeno hasta el 81% de la altura -> se recorta al 78%; 60 fps -> 30
+clip rulo-3 "WhatsApp Video 2026-11-07 at 01.29.40.mp4" 3.6 3.6 "crop=iw:trunc(ih*0.78/2)*2:0:0,fps=30,$NOSCALE"

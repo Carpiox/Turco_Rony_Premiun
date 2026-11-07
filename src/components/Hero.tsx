@@ -24,7 +24,7 @@ export function Hero() {
         </div>
 
         <div className="container-x relative pb-14 pt-16 lg:order-1 lg:max-w-none lg:py-24 lg:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] lg:pr-12">
-          <p className="text-sm font-bold uppercase tracking-wide text-crema">Döner Kebab Cieza</p>
+          <p className="text-sm font-bold uppercase tracking-wide text-crema">Istambul Döner Kebab Cieza</p>
           <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-center gap-1.5 text-sm text-crema underline-offset-4 hover:underline">
             <StarIcon width={16} height={16} className="text-ocre" /><strong>{rating.score}</strong>/{rating.outOf} · {rating.count} valoraciones en Google
           </a>

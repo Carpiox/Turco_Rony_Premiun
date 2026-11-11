@@ -23,7 +23,7 @@ function seo(): Plugin {
       // JSON-LD: se rehace con la URL real (o sin url/image si no la hay)
       html = html.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/, (_m, a, json, c) => {
         const data = JSON.parse(json.replaceAll('__SITE_URL__', siteUrl))
-        if (!siteUrl) { delete data.url; delete data.image }
+        if (!siteUrl) { delete data.url; delete data.image; delete data.logo }
         return `${a}\n${JSON.stringify(data, null, 2)}\n    ${c}`
       })
       // metas con URL absoluta: se quitan si no hay URL del sitio
@@ -33,7 +33,7 @@ function seo(): Plugin {
     generateBundle() {
       this.emitFile({ type: 'asset', fileName: 'robots.txt', source: `User-agent: *\nAllow: /\n${siteUrl ? `Sitemap: ${siteUrl}sitemap.xml\n` : ''}` })
       if (siteUrl) this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${siteUrl}</loc></url></urlset>\n` })
-      else this.warn('VITE_SITE_URL no definida: se omiten canonical, og:url, og:image, sitemap.xml y la url del JSON-LD.')
+      else this.warn('VITE_SITE_URL no definida: se omiten canonical, og:url, og:image, twitter:image, sitemap.xml y la url/image/logo del JSON-LD.')
     },
   }
 }

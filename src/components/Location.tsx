@@ -37,7 +37,7 @@ export function Location() {
         <Reveal delay={0.1}>
           <div className="relative aspect-[16/11] overflow-hidden rounded-2xl bg-ink ring-4 ring-ink">
             {map ? (
-              <iframe title="Mapa de Döner Kebab Cieza" src={mapsEmbed} className="absolute inset-0 h-full w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+              <iframe title="Mapa de Istambul Döner Kebab Cieza" src={mapsEmbed} className="absolute inset-0 h-full w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
             ) : (
               <div className="absolute inset-0 grid place-items-center p-5 text-center">
                 <div>

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { PENDING, site } from '../data/site'
+import { BASE, PENDING, site } from '../data/site'
 import { InstagramIcon, TikTokIcon } from './Icons'
 
 function Doc({ id, title, children }: { id: string; title: string; children: ReactNode }) {
@@ -20,6 +20,7 @@ export function Footer() {
       <p className="container-x pt-10 font-display text-[clamp(2.4rem,11.5vw,6.5rem)] font-black uppercase leading-[.9] tracking-tight text-ocre" style={{ fontVariationSettings: "'wght' 900" }} aria-hidden="true">Istambul<br />Döner Kebab<br />Cieza</p>
       <div className="container-x mt-8 grid gap-10 md:grid-cols-[1fr_1.4fr]">
         <div>
+          <img src={`${BASE}logo-192.png`} width={96} height={96} alt={`Logo de ${site.name}`} loading="lazy" decoding="async" className="mb-4 h-24 w-24" />
           <address className="not-italic text-crema/75">{site.street}<br />{site.city}<br />
             <a href={`tel:${site.phone}`} className="underline decoration-ocre underline-offset-4">{site.phoneDisplay}</a></address>
           <div className="mt-5 flex gap-3">
